@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.5rem;
+  
+  /* Calculator-specific colors based on provided palette */
+  --primary: 210 100% 54%;    /* #2196F3 - Blue for operations */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 122 39% 49%;   /* #4CAF50 - Green for equals */
+  --secondary-foreground: 0 0% 100%;
+  --accent: 14 100% 57%;      /* #FF5722 - Orange for clear */
+  --accent-foreground: 0 0% 100%;
+  
+  /* System Colors */
+  --success: 122 39% 49%;     /* #4CAF50 */
+  --success-foreground: 0 0% 100%;
+  --success-muted: 122 39% 90%;
+  
+  --warning: 36 100% 50%;     /* #FFC107 */
+  --warning-foreground: 0 0% 0%;
+  --warning-muted: 36 100% 90%;
+  
+  --error: 14 100% 57%;       /* #FF5722 */
+  --error-foreground: 0 0% 100%;
+  --error-muted: 14 100% 90%;
+  
+  --info: 210 100% 54%;       /* #2196F3 */
+  --info-foreground: 0 0% 100%;
+  --info-muted: 210 100% 90%;
+  
+  /* Surface Colors */
+  --surface: 0 0% 94%;        /* #F0F0F0 - Main background */
+  --surface-foreground: 0 0% 13%;  /* #212121 */
+  --surface-muted: 0 0% 88%;   /* #E0E0E0 - Number buttons */
+  
+  --background: 0 0% 94%;      /* #F0F0F0 */
+  --foreground: 0 0% 13%;      /* #212121 */
+  
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 13%;  /* #212121 */
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 13%;  /* #212121 */
+  
+  --muted: 0 0% 88%;          /* #E0E0E0 */
+  --muted-foreground: 0 0% 62%;  /* #9E9E9E */
+  
+  /* Color shades */
+  --primary-50: 210 100% 97%;
+  --primary-100: 210 100% 95%;
+  --primary-200: 210 100% 90%;
+  --primary-300: 210 100% 80%;
+  --primary-400: 210 100% 65%;
+  --primary-500: 210 100% 54%;  /* #2196F3 */
+  --primary-600: 210 100% 45%;
+  --primary-700: 210 100% 40%;
+  --primary-800: 210 100% 35%;
+  --primary-900: 210 100% 30%;
+  
+  --secondary-50: 122 39% 97%;
+  --secondary-100: 122 39% 95%;
+  --secondary-200: 122 39% 90%;
+  --secondary-300: 122 39% 80%;
+  --secondary-400: 122 39% 65%;
+  --secondary-500: 122 39% 49%;  /* #4CAF50 */
+  --secondary-600: 122 39% 40%;
+  --secondary-700: 122 39% 35%;
+  --secondary-800: 122 39% 30%;
+  --secondary-900: 122 39% 25%;
+  
+  --accent-50: 14 100% 97%;
+  --accent-100: 14 100% 95%;
+  --accent-200: 14 100% 90%;
+  --accent-300: 14 100% 80%;
+  --accent-400: 14 100% 70%;
+  --accent-500: 14 100% 57%;  /* #FF5722 */
+  --accent-600: 14 100% 50%;
+  --accent-700: 14 100% 45%;
+  --accent-800: 14 100% 40%;
+  --accent-900: 14 100% 35%;
+  
+  /* System Variables */
+  --border: 0 0% 88%;  /* #E0E0E0 */
+  --input: var(--border);
+  --ring: var(--primary);
+}
+
+.dark {
+  --background: 0 0% 13%;      /* #212121 */
+  --foreground: 0 0% 94%;      /* #F0F0F0 */
+  
+  --card: 0 0% 20%;
+  --card-foreground: 0 0% 94%;  /* #F0F0F0 */
+  
+  --popover: 0 0% 20%;
+  --popover-foreground: 0 0% 94%;  /* #F0F0F0 */
+  
+  --primary: 210 100% 65%;     /* Lighter blue for dark mode */
+  --primary-foreground: 0 0% 0%;
+  
+  --secondary: 122 39% 60%;    /* Lighter green for dark mode */
+  --secondary-foreground: 0 0% 0%;
+  
+  --muted: 0 0% 25%;
+  --muted-foreground: 0 0% 70%;
+  
+  --accent: 14 100% 65%;       /* Lighter orange for dark mode */
+  --accent-foreground: 0 0% 0%;
+  
+  --border: 0 0% 30%;
+  --input: 0 0% 30%;
+  --ring: 210 100% 65%;
+  
+  /* Dark Mode System Colors */
+  --success: 122 39% 60%;
+  --warning: 36 100% 60%;
+  --error: 14 100% 65%;
+  --info: 210 100% 65%;
+  
+  --surface: 0 0% 20%;        /* Dark surface */
+  --surface-foreground: 0 0% 94%;  /* #F0F0F0 */
+  --surface-muted: 0 0% 30%;   /* Darker buttons */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .calculator-container {
+    @apply max-w-md mx-auto bg-surface rounded-lg shadow-md overflow-hidden;
+  }
+  
+  .calculator-display {
+    @apply bg-surface-foreground text-surface p-4 text-right text-3xl font-mono h-24 flex flex-col justify-end items-end;
+  }
+  
+  .calculator-buttons {
+    @apply grid grid-cols-4 gap-1 p-2 bg-surface;
+  }
+  
+  .calculator-button {
+    @apply flex items-center justify-center rounded-md text-xl font-medium h-16 transition-all duration-150 shadow-sm;
+  }
+  
+  .number-button {
+    @apply bg-surface-muted text-surface-foreground hover:bg-opacity-80 active:bg-opacity-70;
+  }
+  
+  .operation-button {
+    @apply bg-primary text-primary-foreground hover:bg-primary-600 active:bg-primary-700;
+  }
+  
+  .equals-button {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary-600 active:bg-secondary-700;
+  }
+  
+  .clear-button {
+    @apply bg-accent text-accent-foreground hover:bg-accent-600 active:bg-accent-700;
+  }
+  
+  .zero-button {
+    @apply col-span-2;
+  }
+}
